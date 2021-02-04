@@ -7,6 +7,6 @@ const changeRadioOption = () => {
         if(brRadio[i].checked)
             brImage.classList = brRadio[i].value;
       }
-}
+};
 
-brRadio.forEach(brRadio => brRadio.addEventListener('click', changeRadioOption))
+brRadio.forEach(brRadio => brRadio.addEventListener('click', changeRadioOption));
