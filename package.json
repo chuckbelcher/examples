@@ -1,0 +1,19 @@
+{
+  "name": "slider",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "parcel slider.html",
+    "slider": "parcel slider.html",
+    "gallery": "parcel gallery.html"
+  },
+  "devDependencies": {
+    "sass": "^1.23.3"
+  },
+  "dependencies": {
+    "parcel": "^1.12.4"
+  }
+  
+}

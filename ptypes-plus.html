@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototypes and More</title>
+</head>
+<body>
+    <script>
+        const myDate = new Date('August 23, 1967');
+        console.dir(myDate);
+        console.log(myDate.getDay())
+
+        const Sub = () => { 
+            console.log('Making a new Sub ....')
+        }
+
+        function Pizza() {
+            console.log('Making a new pizza ....')
+        }
+
+        const pepperoniPizza = new Pizza();
+        //const coldCut = new Sub(); //cant make a new sub because of the arrow function
+        //console.log(coldCut);
+        console.log(pepperoniPizza)
+    </script>
+</body>
+</html>
