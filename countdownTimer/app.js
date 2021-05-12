@@ -1,5 +1,3 @@
-console.log("working");
-
 const countdown = () => {
     const countDate = new Date('June 18, 2021 07:00:00').getTime();
     const now = new Date().getTime();
@@ -16,7 +14,6 @@ const countdown = () => {
     const numHours = Math.floor((gap % day) / hour);
     const numMinutes = Math.floor((gap % hour) / minute);
     const numSeconds = Math.floor((gap % minute) / second);
-    console.log(numDays, numHours, numMinutes, numSeconds);
 
     document.querySelector(".day").innerText = numDays;
     document.querySelector(".hour").innerText = numHours;
