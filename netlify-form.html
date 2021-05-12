@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+    <style>
+        body {
+            text-align: center;
+            padding: 2em;
+        }
+
+    </style>
+    <h1>Contact Me</h1>
+    <form name="contact" method="POST" data-netlify="true">
+        <p>
+          <label>Name <input type="text" name="name" /></label>
+        </p>
+        <p>
+          <label>Email <input type="email" name="email" /></label>
+        </p>
+        <p>
+            <textarea name="message" placeholder="Message" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            What is the reason for contacting us?
+        </p>
+        <p>
+            <input type="radio" id="broken" name="reason" value="broken">
+            <label for="broken">Broken/Damaged</label> 
+            <input type="radio" name="reason" id="missing" value="missing">
+            <label for="missing">Missing item</label> 
+            <input type="radio" name="reason" id="shipment" value="shipment">
+            <label for="shipment">Shipment/Delivery</label> 
+            <input type="radio" name="reason" id="other" value="other">
+            <label for="other">Other</label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+</body>
+</html>

@@ -117,79 +117,47 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"js/recipe.js":[function(require,module,exports) {
+//API Endpoint
+const baseEndpoint = "http://www.recipepuppy.com/api"; //needs a cors proxy -- never use with sensitive data
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+const corsproxy = "https://cors-anywhere.herokuapp.com"; //Grab the form
 
-  return bundleURL;
+const form = document.querySelector('form.search'); //Grab Element to put recipes after they are pulled
+
+const recipeGrid = document.querySelector('.recipes');
+
+async function fetchRecipes(query) {
+  const res = await fetch(`${corsproxy}/${baseEndpoint}?q=${query}`);
+  const data = await res.json();
+  return data;
 }
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
+async function handleSubmit(e) {
+  e.preventDefault();
+  const submitBtn = form.submit;
+  const food = form.query.value;
+  submitBtn.disabled = true;
+  const recipes = await fetchRecipes(food);
+  submitBtn.disabled = false;
+  displayRecipes(recipes.results);
 }
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+function displayRecipes(recipes) {
+  console.log(recipes);
+  const html = recipes.map(recipe => {
+    return `<div class="recipe">
+            <a href="${recipe.href}"><h3>${recipe.title}</h3></a>
+            <p>${recipe.ingredients}</p>
+            ${recipe.thumbnail && `<img src="${recipe.thumbnail}" alt="${recipe.title} picture" />`}
+            
+        </div>`;
+  });
+  recipeGrid.innerHTML = html.join('');
 }
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/base.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+form.addEventListener('submit', handleSubmit);
+},{}],"../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +361,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/base.98fd6c19.js.map
+},{}]},{},["../../../../usr/local/Cellar/node/14.5.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/recipe.js"], null)
+//# sourceMappingURL=/recipe.ceaf59a4.js.map

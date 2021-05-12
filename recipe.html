@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Development</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <style>
+        .search {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding-bottom: 20px;
+        }
+        .wrapper h2 {
+            text-align: center;
+        }
+        button[disabled] {
+            opacity: 0.3;
+        }
+        .recipes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+            color: blue;
+            grid-gap: 20px;
+        }
+        .recipe {
+            border: 1px solid;
+            padding: 20px;
+        }
+        .recipe a {
+            text-decoration: none;
+        }
+        .recipe a h3 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>We must eat</h1>
+        <h4>Lets get some recipies, what would you like to cook?</h4>
+        <form class="search" autocomplete="off">
+            <input type="text" name="query" value="omlet">
+            <button name="submit" type="submit">Submit</button>
+        </form>
+        <div class="recipes"></div>
+    </div>
+  
+  <script src='./js/recipe.js'></script>
+</body>
+</html>
