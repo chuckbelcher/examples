@@ -1,0 +1,45 @@
+environment:
+  dev:
+    user:
+      root:
+        password: 'dev-root-pass'
+        expired: False
+      admin:
+        password: 'dev-admin-pass'
+        expired: True
+      read:
+        password: 'dev-read-pass'
+        expired: False
+  sit:
+    user:
+      root:
+        password: 'sit-root-pass'
+        expired: False
+      admin:
+        password: 'sit-admin-pass'
+        expired: False
+      read:
+        password: 'sit-read-pass'
+        expired: False
+  stage:
+    user:
+      root:
+        password: 'stage-root-pass'
+        expired: True
+      admin:
+        password: 'stage-admin-pass'
+        expired: False
+      read:
+        password: 'stage-read-pass'
+        expired: False
+  prod:
+    user:
+      root:
+        password: 'prod-root-pass'
+        expired: False
+      admin:
+        password: 'prod-admin-pass'
+        expired: True
+      read:
+        password: 'prod-read-pass'
+        expired: False
