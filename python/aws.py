@@ -32,7 +32,6 @@ except:
 print('\n\nDatabase Name \t\tDatabase Engine')
 print('-------------------------------------------')
 
-
 try:
     for db in db_response['DBInstances']:
         db_name = db['DBInstanceIdentifier']
